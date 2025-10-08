@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>正安中醫 — Zheng An TCM</title>
+  <link rel="stylesheet" href="style.css" />
+  <meta name="description" content="正安中醫 — 提供针灸、推拿、拔罐、草药等中医服务。在线预约与中/英文切换。" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <h1 data-i18n="clinicName">正安中醫</h1>
+        <p class="tagline" data-i18n="tagline">温和专业 · 传统中医关怀</p>
+      </div>
+
+      <div class="controls">
+        <select id="langToggle" aria-label="切换语言 / Change language">
+          <option value="zh" selected>中文</option>
+          <option value="en">English</option>
+        </select>
+        <nav class="nav">
+          <a href="#home" data-i18n="nav.home">首页</a>
+          <a href="#services" data-i18n="nav.services">服务</a>
+          <a href="#booking" data-i18n="nav.booking">预约</a>
+          <a href="#contact" data-i18n="nav.contact">联系</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO / BANNER -->
+  <section id="home" class="hero">
+    <!-- Replace 'banner.jpg' with your clinic sign photo (recommended: 1200x500px or similar). -->
+    <img src="banner.jpg" alt="正安中醫 招牌" class="hero-image" id="bannerImg" />
+    <div class="hero-content container">
+      <h2 data-i18n="hero.title">欢迎来到正安中醫</h2>
+      <p data-i18n="hero.subtitle">结合传统与个别化护理，关注身体平衡与长期健康。</p>
+      <a href="#booking" class="cta" data-i18n="hero.book">立即预约</a>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="container about">
+    <h3 data-i18n="about.title">关于我们</h3>
+    <p data-i18n="about.p">
+      正安中醫由经验丰富的中医师执业，提供针灸、推拿、草药等全面中医服务，针对慢性疾病、疼痛管理与日常调理。我们强调个别诊断与温和疗法。
+    </p>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" class="container services">
+    <h3 data-i18n="services.title">我们的服务</h3>
+    <p class="intro" data-i18n="services.intro">点击卡片查看详情。若需更多信息，请在预约栏填写您的问题。</p>
+
+    <div class="services-grid" id="servicesGrid">
+      <!-- 14 service cards -->
+      <!-- Each card uses data attributes for accessible toggling; content is filled via script for bilingual text -->
+    </div>
+  </section>
+
+  <!-- BOOKING -->
+  <section id="booking" class="container booking">
+    <h3 data-i18n="booking.title">预约看诊</h3>
+    <p data-i18n="booking.instructions">请填写下列资料，我们会尽快与您确认预约。当前表单会发送到占位邮箱（可在代码中替换）。</p>
+
+    <!--
+      Using Formsubmit.co with a placeholder email.
+      Replace clinic@example.com with your real email or replace the whole action with your Formspree endpoint later.
+      Example Formsubmit action: action="https://formsubmit.co/clinic@example.com"
+    -->
+    <form id="bookingForm" class="form" method="POST" action="https://formsubmit.co/clinic@example.com">
+      <!-- basic anti-spam (honeypot):
+           keep the input name as _honey and leave it hidden -->
+      <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+
+      <!-- redirect or thank you: Formsubmit supports _next -->
+      <input type="hidden" name="_next" value="#thankyou" />
+
+      <div class="form-grid">
+        <label>
+          <span data-i18n="form.name">姓名</span>
+          <input type="text" name="Name" required placeholder="张三" />
+        </label>
+
+        <label>
+          <span data-i18n="form.email">电邮 / Email</span>
+          <input type="email" name="Email" required placeholder="you@example.com" />
+        </label>
+
+        <label>
+          <span data-i18n="form.phone">电话 / Phone</span>
+          <input type="tel" name="Phone" required placeholder="+65 9xxxxxxx" />
+        </label>
+
+        <label>
+          <span data-i18n="form.preferred">偏好日期 / Preferred date</span>
+          <input type="date" name="PreferredDate" />
+        </label>
+
+        <label class="full">
+          <span data-i18n="form.service">预约服务 / Service</span>
+          <select name="Service" required id="serviceSelect">
+            <!-- will be populated from the same services list -->
+          </select>
+        </label>
+
+        <label class="full">
+          <span data-i18n="form.notes">备注 / Notes</span>
+          <textarea name="Notes" rows="4" placeholder="简要说明您的情况或问题"></textarea>
+        </label>
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" class="btn primary" data-i18n="form.submit">提交预约</button>
+        <button type="reset" class="btn" data-i18n="form.reset">清除</button>
+      </div>
+    </form>
+
+    <div id="thankyou" class="thankyou" aria-hidden="true">
+      <h4 data-i18n="thanks.title">谢谢 — 我们已收到您的预约！</h4>
+      <p data-i18n="thanks.p">诊所将尽快与您联系确认时间。</p>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <footer id="contact" class="container footer">
+    <h4 data-i18n="contact.title">联系信息</h4>
+    <p><strong data-i18n="contact.addressLabel">地址：</strong><span data-i18n="contact.address">示例街道 123 号，市区</span></p>
+    <p><strong data-i18n="contact.hoursLabel">营业时间：</strong><span data-i18n="contact.hours">周一–周五 09:00–18:00，周六 09:00–13:00</span></p>
+    <p><strong data-i18n="contact.phoneLabel">电话：</strong><a href="tel:+6590000000">+65 9000 0000</a></p>
+    <p><strong data-i18n="contact.emailLabel">电邮：</strong><a href="mailto:clinic@example.com">clinic@example.com</a></p>
+
+    <div class="smallprint">
+      <p data-i18n="footer.copy">© <span id="year"></span> 正安中醫。保留所有权利。</p>
+    </div>
+  </footer>
